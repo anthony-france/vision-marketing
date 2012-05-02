@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 app/tmp/*
 app/Config/database.php
 app/webroot/uploads/*
 !empty
+=======
+tmp/*
+config/database.php
+app/tmp/*
+app/config/database.php
+!empty
+>>>>>>> b595d07dc7741ad02fdb972b0cf1ab51ccc883d4
