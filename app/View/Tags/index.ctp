@@ -9,7 +9,7 @@
 	<?php
 	foreach ($tags as $tag): ?> 
 	<tr>
-		<td><?php echo h($tag['Tag']['name']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($tag['Tag']['name']), array('controller'=>'tags', 'action'=>'view', $tag['Tag']['id'])); ?>&nbsp;</td>
 	   <td>
 			
 			<?php if (!empty($tag['Image'])): ?>
@@ -42,7 +42,7 @@
 
 				?>
 					<?php 
-				echo $this->Bootstrap->button_link(
+		/*		echo $this->Bootstrap->button_link(
 					$this->Bootstrap->icon('pencil', 'black') . ' ' . __('Edit'), 
 					array('action' => 'edit', $tag['Tag']['id']), 
 					 array(
@@ -51,12 +51,12 @@
 						"style" => "default", 
 						"size" => "small"
 					)
-				); 
+				);  */
 
 				?>					
 
 							<?php 
-				echo $this->Bootstrap->button_link(
+			/*	echo $this->Bootstrap->button_link(
 					$this->Bootstrap->icon('tag', 'black') . ' ' . __('View'), 
 					array('action' => 'view', $tag['Tag']['id'] ), 
 					 array(
@@ -66,7 +66,7 @@
 						"size" => "small"
 					)
 				); 
-
+*/
 				?>
 		</td>
 	</tr>

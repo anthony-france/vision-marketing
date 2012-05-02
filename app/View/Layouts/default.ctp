@@ -81,9 +81,7 @@ $cakeDescription = __d('header_link', 'Vision Marketing Builder');
 							); 
 							?>
 							<ul class="dropdown-menu">
-							  <li><a href="/books"><?php echo $this->Bootstrap->icon("book", "black"); ?> View Books</a></li>
-							  <li><a href="/books/edit/<?php echo $this->Session->read('Book.Book.id') ?>"><?php echo $this->Bootstrap->icon("pencil", "black"); ?> Edit Selected Book</a></li>
-							  <li><a href="/books/view/<?php echo $this->Session->read('Book.Book.id') ?>"><?php echo $this->Bootstrap->icon("book", "black"); ?> View Selected Book</a></li>
+							  <li><a href="/books"><?php echo $this->Bootstrap->icon("book", "black"); ?> Books</a></li>
 							  <li><a href="/books/view/<?php echo $this->Session->read('Book.Book.id') ?>/pdf"><?php echo $this->Bootstrap->icon("share", "black"); ?>Download PDF</a></li>
 							  <li><a href="/books/view/<?php echo $this->Session->read('Book.Book.id') ?>/zip"><?php echo $this->Bootstrap->icon("share", "black"); ?>Download ZIP</a></li>
 							</ul>

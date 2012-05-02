@@ -13,12 +13,12 @@
 	<tr>
 		<td><?php echo $this->Html->link( $this->Html->image('/img/' . $document['Document']['mimetype'] . '.png') , array('controller'=>'documents', 'action'=>'view', $document['Document']['id'], 'download'), array('escape'=>false));?>&nbsp;</td>
 		<td><?php echo $this->Html->link( $document['Document']['filename'], array('controller'=>'documents', 'action'=>'view', $document['Document']['id'], 'download'), array('escape'=>false));?>&nbsp;
-		
+			<div>
 			<?php foreach($document['Tag'] as $tag): ?>
 				<?php echo $this->Html->link($this->Bootstrap->label($tag['name']), array('controller'=>'tags', 'action'=>'view', $tag['id']), array('escape'=>false)); ?>
 			<?php endforeach; ?>
 			<?php //echo $this->element('add_tag_to_document', array('id'=>$document['Document']['id'])); ?>
-		
+			</div>
 		</td>
 		<td><?php echo $this->Byte->human($document['Document']['filesize'], 0); ?>&nbsp;</td>
 		<td><?php echo h($this->Date->ago($document['Document']['modified'])); ?>&nbsp;</td> 
@@ -39,7 +39,7 @@
 
 				?>
 					<?php 
-				echo $this->Bootstrap->button_link(
+		/*		echo $this->Bootstrap->button_link(
 					$this->Bootstrap->icon('pencil', 'black') . ' ' . __('Edit'), 
 					array('action' => 'edit', $document['Document']['id']), 
 					 array(

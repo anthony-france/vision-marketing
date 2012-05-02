@@ -5,10 +5,10 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('caption');
-		echo $this->Form->input('filename', array('type' => 'file')); 
-		echo $this->Form->input('dir', array('type' => 'hidden'));
-		echo $this->Form->input('mimetype', array('type' => 'hidden'));
-		echo $this->Form->input('filesize', array('type' => 'hidden'));
+		//echo $this->Form->input('filename', array('type' => 'file')); 
+		//echo $this->Form->input('dir', array('type' => 'hidden'));
+		//echo $this->Form->input('mimetype', array('type' => 'hidden'));
+		//echo $this->Form->input('filesize', array('type' => 'hidden'));
 		//echo $this->Form->input('Book');
 		echo $this->Form->input('Tag', array('multiple' => 'checkbox'));
 	?>

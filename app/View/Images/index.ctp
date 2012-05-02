@@ -62,7 +62,7 @@
 	?>
 	<tr>
 		<td>
-		<div><?php echo h($image['Image']['caption']); ?>&nbsp;</div>
+		<div><?php echo $this->Html->link(h($image['Image']['caption']), array('controller'=>'images', 'action'=>'view', $image['Image']['id'])); ?>&nbsp;</div>
 		<div>
 			<?php
 				   foreach ($image['Tag'] as $tag) {

@@ -11,16 +11,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Tag'), array('action' => 'edit', $tag['Tag']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Tag'), array('action' => 'delete', $tag['Tag']['id']), null, __('Are you sure you want to delete # %s?', $tag['Tag']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tags'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Tag'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Images'), array('controller' => 'images', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Image'), array('controller' => 'images', 'action' => 'add')); ?> </li>
+	
 	</ul>
 </div>
+<div class="clear"></div>
 <div class="related">
-	<h3><?php echo __('Related Images');?></h3> 
+	<h3><?php echo __('Tagged Images');?></h3> 
 	<?php if (!empty($tag['Image'])):?>
 	<table class="table table-striped">
 	<tr>
@@ -50,7 +46,7 @@
 
 				?>
 					<?php 
-				echo $this->Bootstrap->button_link(
+	/*			echo $this->Bootstrap->button_link(
 					$this->Bootstrap->icon('pencil', 'black') . ' ' . __('Edit'), 
 					array('controller'=>'images', 'action' => 'edit', $image['id']), 
 					 array(
@@ -74,7 +70,7 @@
 						"size" => "small"
 					)
 				); 
-
+*/
 				?>
 			</td>
 		</tr>
@@ -85,7 +81,7 @@
 
 <div class="clear"></div>
 
-	<h3><?php echo __('Related Documents');?></h3>
+	<h3><?php echo __('Tagged Documents');?></h3>
 	<?php if (!empty($tag['Document'])):?>
 	<table class="table table-striped">
 	<tr>
@@ -114,7 +110,7 @@
 
 				?>
 					<?php 
-				echo $this->Bootstrap->button_link(
+	/*			echo $this->Bootstrap->button_link(
 					$this->Bootstrap->icon('pencil', 'black') . ' ' . __('Edit'), 
 					array('controller'=>'documents', 'action' => 'edit', $image['id']), 
 					 array(
@@ -138,7 +134,7 @@
 						"size" => "small"
 					)
 				); 
-
+  */
 				?>
 			</td>
 		</tr>

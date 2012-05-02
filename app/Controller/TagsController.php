@@ -26,6 +26,7 @@ class TagsController extends AppController {
  */
 	public function view($id = null) {
 		$this->Tag->id = $id;
+		$this->Tag->recursive = 2;
 		if (!$this->Tag->exists()) {
 			throw new NotFoundException(__('Invalid tag'));
 		}
