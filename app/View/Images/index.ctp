@@ -64,11 +64,7 @@
 		<td>
 		<div><?php echo $this->Html->link(h($image['Image']['caption']), array('controller'=>'images', 'action'=>'view', $image['Image']['id'])); ?>&nbsp;</div>
 		<div>
-			<?php
-				   foreach ($image['Tag'] as $tag) {
-					echo $this->Html->link($this->Bootstrap->label($tag['name']), array('controller'=>'tags', 'action' => 'view', $tag['id']), array('escape'=>false));		
-				}
-			  ?>
+				<?php echo $this->element('tags', array('tags'=>$image['Tag'], 'model'=>'image', 'id'=>$image['Image']['id'])); ?>
 		</div>
 		</td>
 		<td><?php echo $this->Html->link($this->Html->image('/' . $image['Image']['dir'] .'/thumb/index/'. $image['Image']['filename']), array('controller'=>'images','action'=>'view', $image['Image']['id']), array('escape'=>false));?></td>

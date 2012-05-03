@@ -34,6 +34,7 @@ $cakeDescription = __d('header_link', 'Vision Marketing Builder');
 		
 		
 		echo $this->Html->script('jquery-1.7.2.min');
+		echo $this->Html->script('jquery-ui-1.8.20.custom.min');
 		echo $this->Html->script('bootstrap');
 		echo $this->Html->script('core');
 		

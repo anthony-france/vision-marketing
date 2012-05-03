@@ -106,8 +106,14 @@ class DocumentsController extends AppController {
 	}
 	
 	public function tagged() {
+		$result = array();
+		if($this->RequestHandler->isAjax()) {
+						$this->layout = 'ajax';
+		}
+		
 		if ($this->request->is('post')) {
-			
+
+			$tag_id = 0;
 			$document_id = $this->request->data['Document']['Document']['id'];
 			$tag = $this->Document->Tag->findByName($this->request->data['Document']['Tag']['name']);
 			
@@ -117,26 +123,31 @@ class DocumentsController extends AppController {
 			else {
 				if ($this->Document->Tag->save($this->request->data['Document']['Tag'])) {
 					$tag_id = $this->Document->Tag->getLastInsertId();
-							
-
 				}
 				else {
 					$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
 				}	
 			}
+
+			$result['tag_id'] = $tag_id;
+			$result['object_id'] = $document_id;
+			$result['label'] = $this->request->data['Document']['Tag']['name'];
 			
 			if ($tag_id) {
 				$tagged = false;
 				$tagged = $this->Document->DocumentsTag->find('first', array('conditions'=>array('document_id'=>$document_id, 'tag_id'=>$tag_id)));
 				if (!$tagged && $this->Document->DocumentsTag->save(array('DocumentsTag'=>array('document_id'=>$document_id, 'tag_id'=>$tag_id)))) {
-					$this->Session->setFlash(__('Document Tagged'));
+					$result['create'] = true;
 				}
 				else {
-					$this->Session->setFlash(__('Already Tagged'));
+				
 				}
-			}			
-			
+			}
+			else {
+				
+			}
 		}
+		$this->set('result', $result);
 	}
 }
 

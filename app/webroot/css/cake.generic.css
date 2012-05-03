@@ -711,5 +711,29 @@ div.checkbox {
 }
 
 .hidden {
-	display: none;
+	display: none; 
+}
+
+
+div.add-tag-container {
+	position: relative;
+	background: white;
+	display: inline-block;
+}
+
+div.add-tag-container div.add-form {
+clear: both;
+display: none;
+position: absolute;
+top: 0px;
+left: 10px;
+height: 20px;
+overflow: hidden;
+margin-left: 30px;
+background: white;
+}
+
+div.add-tag-container div.add-form div.input {
+margin: 0px;
+padding: 0px;
 }

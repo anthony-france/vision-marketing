@@ -43,11 +43,8 @@
 <?php echo $this->Bootstrap->button_link($this->Bootstrap->icon('pencil', 'black') . ' ' . __('Edit Image'), array('controller'=>'images', 'action' => 'edit', $image['Image']['id'] ), array('class'=>'pull-right', 'escape' => false, "style" => "default", "size" => "small")); ?>
 
 <div class="clear"></div>
-<?php
-       foreach ($image['Tag'] as $tag) {
-		echo $this->Html->link($this->Bootstrap->label($tag['name'], 'info'), array('controller'=>'tags', 'action'=>'view', $tag['id']), array('escape'=>false));		
-	}
-  ?>
+  <?php echo $this->element('tags', array('tags'=>$image['Tag'], 'model'=>'image', 'id'=>$image['Image']['id'])); ?>
+
 	<dl>
 		<dt><?php echo __('Caption'); ?></dt>
 		<dd>

@@ -29,9 +29,10 @@
 		foreach ($tag['Image'] as $image): ?>
 		<tr>
 			<td><?php echo $this->Html->link( $this->Html->image('/' . $image['dir'] .'/thumb/icon/'. $image['filename']), array('controller'=>'images', 'action'=>'view', $image['id']), array('escape'=>false));?></td>
-			<td><?php echo $image['caption'];?> </td>
+			<td><?php echo $image['caption'];?> 
+			<div  class="load-tags-img" id="i-<?php echo $image['id']; ?>"><?php echo $this->Bootstrap->label('loading tags'); ?><img src="/img/loading.gif" /></div></td>
 			<td class="actions">
-										<?php 
+			<?php 
 				echo $this->Bootstrap->button_form(
 					$this->Bootstrap->icon('trash', 'white') . ' ' . __('Remove From Tag'), 
 					array('controller' => 'imagesTags', 'action' => 'delete', $image['ImagesTag']['id']), 
@@ -90,15 +91,20 @@
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($tag['Document'] as $image): ?> 
+		foreach ($tag['Document'] as $document): ?> 
 		<tr>
-			<td><?php echo $this->Html->link( $this->Html->image('/img/' . $image['mimetype'] . '.png') .' '. $image['filename'], array('controller'=>'documents', 'action'=>'view', $image['id'], 'download'), array('escape'=>false));?></td>
+			<td>
+			
+			<?php echo $this->Html->link( $this->Html->image('/img/' . $document['mimetype'] . '.png') .' '. $document['filename'], array('controller'=>'documents', 'action'=>'view', $document['id'], 'download'), array('escape'=>false));?>
+			<div class="load-tags-doc" id="d-<?php echo $document['id']; ?>"><?php echo $this->Bootstrap->label('loading tags'); ?><img src="/img/loading.gif" /></div>
+			
+			</td>
 			<td class="actions">
 			
 			<?php 
 				echo $this->Bootstrap->button_form(
 					$this->Bootstrap->icon('trash', 'white') . ' ' . __('Remove From Tag'), 
-					array('controller' => 'documentsTags', 'action' => 'delete', $image['DocumentsTag']['id']), 
+					array('controller' => 'documentsTags', 'action' => 'delete', $document['DocumentsTag']['id']), 
 					 array(
 						'class'=>'pull-right', 
 						'escape' => false, 

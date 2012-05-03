@@ -100,9 +100,15 @@ class ImagesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
-		public function tagged() {
+	public function tagged() {
+		$result = array();
+		if($this->RequestHandler->isAjax()) {
+						$this->layout = 'ajax';
+		}
+		
 		if ($this->request->is('post')) {
-			
+
+			$tag_id = 0;
 			$image_id = $this->request->data['Image']['Image']['id'];
 			$tag = $this->Image->Tag->findByName($this->request->data['Image']['Tag']['name']);
 			
@@ -112,26 +118,30 @@ class ImagesController extends AppController {
 			else {
 				if ($this->Image->Tag->save($this->request->data['Image']['Tag'])) {
 					$tag_id = $this->Image->Tag->getLastInsertId();
-							
-
 				}
 				else {
 					$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
 				}	
 			}
+
+			$result['tag_id'] = $tag_id;
+			$result['object_id'] = $image_id;
+			$result['label'] = $this->request->data['Image']['Tag']['name'];
 			
 			if ($tag_id) {
 				$tagged = false;
-				$tagged = $this->Image->ImagesTag->find('first', array('conditions'=>array('document_id'=>$image_id, 'tag_id'=>$tag_id)));
-				if (!$tagged && $this->Image->ImagesTag->save(array('ImagesTag'=>array('document_id'=>$image_id, 'tag_id'=>$tag_id)))) {
-					$this->Session->setFlash(__('Image Tagged'));
+				$tagged = $this->Image->ImagesTag->find('first', array('conditions'=>array('image_id'=>$image_id, 'tag_id'=>$tag_id)));
+				if (!$tagged && $this->Image->ImagesTag->save(array('ImagesTag'=>array('image_id'=>$image_id, 'tag_id'=>$tag_id)))) {
+					$result['create'] = true;
 				}
 				else {
-					$this->Session->setFlash(__('Already Tagged'));
+				
 				}
-			}			
-			
+			}
+			else {
+				
+			}
 		}
+		$this->set('result', $result);
 	}
-	
 }

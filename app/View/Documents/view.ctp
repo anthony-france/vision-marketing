@@ -53,12 +53,7 @@
 
 				?>
 
-<?php
-       foreach ($document['Tag'] as $tag) {
-		echo $this->Html->link($this->Bootstrap->label($tag['name']), array('controller'=>'tags', 'action'=>'view', $tag['id']), array('escape'=>false));		
-	}
-  ?>
-  
+				<?php echo $this->element('tags', array('tags'=>$document['Tag'], 'model'=>'document', 'id'=>$document['Document']['id'])); ?>  
 	<dl>
 		<dt><?php echo __('Filename'); ?></dt>
 		<dd>
